@@ -83,7 +83,7 @@ def hypothesis(theta0, theta1, km):
 def plot_data(theta0, theta1, km, price):
 	plt.plot([hypothesis(theta0, theta1, x) for x in range(250000)], "b", linewidth=3)
 	plt.plot(km, price, "ro")
-	plt.show();
+	plt.show()
 
 def save_thetas(theta0, theta1):
 	fname = "thetas.csv"
