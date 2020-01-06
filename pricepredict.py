@@ -7,11 +7,13 @@ def opendata():
 	theta0 = 0.0
 	theta1 = 0.0
 	try:
-		file = open("thetas.csv","r")
-		test=csv.reader(file)
+		file = open("thetas.csv", "r")
+		test = csv.reader(file)
 		for row in test:
-			theta0 = float(row[0])
-			theta1 = float(row[1])
+			if row[0] == 'theta0':
+				theta0 = float(row[1])
+			if row[0] == 'theta1':
+				theta1 = float(row[1])
 	except:
 		theta0 = 0.0
 		theta1 = 0.0
@@ -33,4 +35,6 @@ def estimate():
 		estimatePrice = theta0 + theta1 * givenKm
 		print("A car with {} km should cost {} euros".format(int(round(givenKm, 0)), int(round(estimatePrice, 0))))
 
-estimate()
+
+if __name__ == '__main__':
+	estimate()
