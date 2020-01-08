@@ -25,15 +25,24 @@ def estimate():
 	if theta0 == 0.0 and theta1 == 0:
 		print("thetas are not yet been evaluated")
 	else:
-		while 1:
+		while True:
 			try:
 				givenKm = input("Give a milesage to estimate a price ? ")
+				if givenKm == 'quit':
+					break
 				givenKm = int(givenKm)
-				break
+				if givenKm < 0:
+					print("milesage must be positive")
+				else:
+					estimatePrice = theta0 + theta1 * givenKm
+					if estimatePrice >= 0:
+						print("A car with {} km should cost {} euros".format(int(round(givenKm, 0)), int(round(estimatePrice, 0))))
+					else:
+						print("The regression shows that a car with {} km should cost {} euros, so it means 0 euros".format(int(round(givenKm, 0)), int(round(estimatePrice, 0))))
+					break
 			except:
 				print("Km should be an integer")
-		estimatePrice = theta0 + theta1 * givenKm
-		print("A car with {} km should cost {} euros".format(int(round(givenKm, 0)), int(round(estimatePrice, 0))))
+
 
 
 if __name__ == '__main__':
